@@ -1,8 +1,9 @@
 
 export const managePresents = (state, action) => {
-    if (action.type === 'INCREASE') {
+    switch (action.type) {
+    case 'INCREASE':
         return { numberOfPresents: state.numberOfPresents + 1 }
-    } else {
+    default:
         return state
     }
 }

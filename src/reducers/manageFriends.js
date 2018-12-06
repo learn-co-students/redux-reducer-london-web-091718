@@ -1,6 +1,7 @@
 
 export const manageFriends = (state, action) => {
-    if (action.type === 'ADD_FRIEND') {
+    switch (action.type) {
+    case 'ADD_FRIEND':
         return {
             friends: [ 
                 ...state.friends,
@@ -10,7 +11,7 @@ export const manageFriends = (state, action) => {
                 id: action.friend.id
                 }] 
             }
-        } else if (action.type === 'REMOVE_FRIEND') {
+    case 'REMOVE_FRIEND':
             const copyOfFriends = state.friends.slice()
             const foundFriend = copyOfFriends.find(friend => friend.id === 101)
             const foundFriendIndex = copyOfFriends.indexOf(foundFriend)
@@ -18,7 +19,7 @@ export const manageFriends = (state, action) => {
         return {
             friends: copyOfFriends   
             }
-        } else {
+    default:
             return state
         }
 }
